@@ -1,56 +1,130 @@
 import 'package:flutter/material.dart';
 import '../ui/beranda.dart';
+import '../ui/dokter_page.dart';
+import '../ui/jadwal_page.dart';
 import '../ui/login.dart';
+import '../ui/obat_page.dart';
 import '../ui/poli_page.dart';
 
 class Sidebar extends StatelessWidget {
-  const Sidebar({Key? key}) : super(key: key);
+  const Sidebar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      // Code by: Doni Arianto Pertemuan 6
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-              accountName: Text("Admin"),
-              accountEmail: Text("admin@admin.com")),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.teal.shade700, Colors.teal.shade400],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+            currentAccountPicture: const CircleAvatar(
+              backgroundColor: Colors.white,
+              child: Icon(
+                Icons.local_hospital_rounded,
+                size: 36,
+                color: Colors.teal,
+              ),
+            ),
+            accountName: const Text(
+              "Admin Klinik",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            accountEmail: const Text("admin@admin.com"),
+          ),
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text("Beranda"),
+            leading: const Icon(Icons.home_rounded, color: Colors.teal),
+            title: const Text("Beranda"),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Beranda()));
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const Beranda()),
+              );
             },
           ),
           ListTile(
-            leading: Icon(Icons.accessible),
-            title: Text("Poli"),
+            leading:
+                const Icon(Icons.local_hospital_rounded, color: Colors.teal),
+            title: const Text("Data Poli"),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => PoliPage()));
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const PoliPage()),
+              );
+            },
+          ),
+          const Divider(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+            child: Text(
+              "LAYANAN & DATA KLINIK",
+              style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey.shade600,
+              ),
+            ),
+          ),
+          ListTile(
+            leading:
+                const Icon(Icons.medical_services_rounded, color: Colors.teal),
+            title: const Text("Data Dokter"),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const DokterPage()),
+              );
             },
           ),
           ListTile(
-            leading: Icon(Icons.people),
-            title: Text("Pegawai"),
+            leading: const Icon(Icons.medication_rounded, color: Colors.teal),
+            title: const Text("Data Obat"),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const ObatPage()),
+              );
+            },
+          ),
+          ListTile(
+            leading:
+                const Icon(Icons.calendar_month_rounded, color: Colors.teal),
+            title: const Text("Jadwal Praktik"),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const JadwalPage()),
+              );
+            },
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.people_rounded, color: Colors.grey),
+            title: const Text("Pegawai"),
             onTap: () {},
           ),
           ListTile(
-            leading: Icon(Icons.account_box_sharp),
-            title: Text("Pasien"),
+            leading: const Icon(Icons.account_box_rounded, color: Colors.grey),
+            title: const Text("Pasien"),
             onTap: () {},
           ),
+          const Divider(),
           ListTile(
-            leading: Icon(Icons.logout_rounded),
-            title: Text("Keluar"),
+            leading: const Icon(Icons.logout_rounded, color: Colors.red),
+            title: const Text("Keluar", style: TextStyle(color: Colors.red)),
             onTap: () {
               Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => Login()),
-                  (Route<dynamic> route) => false);
+                context,
+                MaterialPageRoute(builder: (context) => const Login()),
+                (Route<dynamic> route) => false,
+              );
             },
-          )
+          ),
         ],
       ),
     );
