@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import '../model/poli.dart';
 import 'poli_detail.dart';
 
 class PoliForm extends StatefulWidget {
-  const PoliForm({Key? key}) : super(key: key);
+  const PoliForm({super.key});
+  @override
   _PoliFormState createState() => _PoliFormState();
 }
 
@@ -20,7 +21,7 @@ class _PoliFormState extends State<PoliForm> {
         child: Form(
           key: _formKey,
           child: Column(
-            children: [_fieldNamaPoli(), SizedBox(height: 20), _tombolSimpan()],
+            children: [_fieldNamaPoli(), const SizedBox(height: 20), _tombolSimpan()],
           ),
         ),
       ),
@@ -37,7 +38,7 @@ class _PoliFormState extends State<PoliForm> {
   _tombolSimpan() {
     return ElevatedButton(
         onPressed: () {
-          Poli poli = new Poli(namaPoli: _namaPoliCtrl.text);
+          Poli poli = Poli(namaPoli: _namaPoliCtrl.text);
           Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (context) => PoliDetail(poli: poli)));
         },

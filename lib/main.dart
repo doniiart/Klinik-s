@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import './ui/beranda.dart';
 
 void main() {
@@ -10,11 +10,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       // Code by : Doni Arianto || 19232429
       title: 'Klinik APP',
       debugShowCheckedModeBanner: false,
-      home: const Beranda(),
+      home: Beranda(),
     );
   }
 }
@@ -30,7 +30,7 @@ class MyHomePage extends StatelessWidget {
         // The title text which will be shown on the action bar
         title: Text(title),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'Hello, World!',
         ),

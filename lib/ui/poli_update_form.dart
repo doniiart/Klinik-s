@@ -1,11 +1,12 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import '../model/poli.dart';
 import 'poli_detail.dart';
 
 class PoliUpdateForm extends StatefulWidget {
   final Poli poli;
 
-  const PoliUpdateForm({Key? key, required this.poli}) : super(key: key);
+  const PoliUpdateForm({super.key, required this.poli});
+  @override
   _PoliUpdateFormState createState() => _PoliUpdateFormState();
 }
 
@@ -27,7 +28,7 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
       appBar: AppBar(title: const Text("Ubah Poli")),
       body: SingleChildScrollView(
         child: Column(
-          children: [_fieldNamaPoli(), SizedBox(height: 20), _tombolSimpan()],
+          children: [_fieldNamaPoli(), const SizedBox(height: 20), _tombolSimpan()],
         ),
       ),
     );
@@ -43,7 +44,7 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
   _tombolSimpan() {
     return ElevatedButton(
         onPressed: () {
-          Poli poli = new Poli(namaPoli: _namaPoliCtrl.text);
+          Poli poli = Poli(namaPoli: _namaPoliCtrl.text);
           Navigator.pop(context);
           Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (context) => PoliDetail(poli: poli)));

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'poli_update_form.dart';
 import '../model/poli.dart';
 import 'poli_page.dart';
@@ -18,15 +18,15 @@ class _PoliDetailState extends State<PoliDetail> {
   // Code By : DONI ARIANTO Pertemuan 5
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Detail Poli")),
+      appBar: AppBar(title: const Text("Detail Poli")),
       body: Column(
         children: [
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Text(
             "Nama Poli: ${widget.poli.namaPoli}",
-            style: TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 20),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -61,17 +61,17 @@ class _PoliDetailState extends State<PoliDetail> {
               onPressed: () {
                 Navigator.pop(context);
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => PoliPage()));
+                    MaterialPageRoute(builder: (context) => const PoliPage()));
               },
-              child: const Text("Ya"),
               style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+              child: const Text("Ya"),
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text("Tidak"),
               style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+              child: Text("Tidak"),
             )
           ],
         );
