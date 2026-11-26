@@ -5,6 +5,7 @@ import '../ui/jadwal_page.dart';
 import '../ui/login.dart';
 import '../ui/obat_page.dart';
 import '../ui/poli_page.dart';
+import '../helpers/user_info.dart';
 
 class Sidebar extends StatelessWidget {
   const Sidebar({super.key});
@@ -117,7 +118,9 @@ class Sidebar extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.logout_rounded, color: Colors.red),
             title: const Text("Keluar", style: TextStyle(color: Colors.red)),
-            onTap: () {
+            onTap: () async {
+              await UserInfo().logout();
+              if (!context.mounted) return;
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(builder: (context) => const Login()),
